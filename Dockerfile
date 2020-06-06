@@ -10,6 +10,7 @@ ENV HASURA_GRAPHQL_DEV_MODE=true
 # the primary postgres instance in your app
 CMD graphql-engine \
     --database-url $DATABASE_URL \
+    --access-key $ADMIN_SECRET \
     serve \
     --server-port $PORT
 
@@ -21,6 +22,6 @@ CMD graphql-engine \
 #    serve \
 #    --server-port $PORT \
 #    --access-key XXXXX \
-#    --auth-hook https://myapp.com/hasura-webhook 
+#    --auth-hook https://myapp.com/hasura-webhook
 #
 # Console can be enable/disabled by the env var HASURA_GRAPHQL_ENABLE_CONSOLE
