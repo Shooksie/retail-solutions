@@ -1,0 +1,18 @@
+overwrite: true
+schema:
+  - https://retail-solutions.herokuapp.com/v1/graphql:
+      headers:
+        X-HASURA-ADMIN-SECRET: MY_ADMIN_SECRET
+documents: "**/*.graphql"
+generates:
+  ./types.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withComponent: false
+      withHOC: false
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

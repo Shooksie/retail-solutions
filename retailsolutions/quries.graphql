@@ -1,0 +1,24 @@
+query getStores($limit: Int!, $offset: Int!) {
+    stores(limit: $limit, offset: $offset) {
+        name
+        owner
+        user {
+            username
+            uid
+        }
+        items {
+            name
+            uuid
+            description
+        }
+    }
+}
+
+query GetItemByText($value: String!) {
+    items(where: {_or: {name: {_ilike: $value}, description: {_ilike: $value}}}) {
+        name,
+        description,
+        uuid,
+        seller
+    }
+}
